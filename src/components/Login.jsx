@@ -19,70 +19,37 @@ const Login = () => {
         action=""
         className="text-white bg-black absolute px-6 py-20 w-1/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center rounded-2xl opacity-75"
       >
-        {showLoginForm ? (
-          <>
-            <h1 className="text-3xl font-bold text-left mx-10 my-9">
-              Log Into Your Account
-            </h1>
-            <input
-              type="text"
-              placeholder="Email Address"
-              className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-            />
-            <button className="p-4 my-7 w-4/5 text-white bg-red-600 rounded-lg">
-              Log In
-            </button>
-            <h3>
-              New Here?{" "}
-              <span
-                className="cursor-pointer underline"
-                onClick={() => {
-                  setshowLoginForm(!showLoginForm);
-                }}
-              >
-                Create An Account
-              </span>
-            </h3>
-          </>
-        ) : (
-          <>
-            <h1 className="text-3xl font-bold text-left mx-10 my-9">Sign Up</h1>
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-            />
-            <input
-              type="text"
-              placeholder="Email Address"
-              className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-            />
-            <button className="p-4 my-7 w-4/5 text-white bg-red-600 rounded-lg">
-              Sign Up
-            </button>
-            <h3>
-              Already a User?{" "}
-              <span
-                className="cursor-pointer underline"
-                onClick={() => {
-                  setshowLoginForm(!showLoginForm);
-                }}
-              >
-                Login
-              </span>
-            </h3>
-          </>
-        )}
+        <h1 className="text-3xl font-bold text-left mx-10 my-9">{showLoginForm ? "Login" : "Sign Up"}</h1>
+        <input
+          type="text"
+          placeholder="Your Name"
+          className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
+          hidden={!showLoginForm}
+        />
+        <input
+          type="text"
+          placeholder="Email Address"
+          className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
+        />
+        <button className="p-4 my-7 w-4/5 text-white bg-red-600 rounded-lg">
+          {showLoginForm ? "Login" : "Create An Account"}
+        </button>
+        <h3>
+          {showLoginForm ? "New Here? " : "Already a User? "}
+          <span
+            className="cursor-pointer underline"
+            onClick={() => {
+              setshowLoginForm(!showLoginForm);
+            }}
+          >
+            {showLoginForm ? "Create An Account" : "Login"}
+          </span>
+        </h3>
       </form>
     </div>
   );
