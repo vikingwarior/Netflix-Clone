@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { validateEmail, validatePassword } from "../utils/formValidations";
 
 const Login = () => {
   const [showLoginForm, setshowLoginForm] = useState(true);
+
+  const email = useRef();
+  const password = useRef();
+
+  const validateFields = () => {
+    const isEmailValid = validateEmail(email.current.value)
+    modifyTextBoxCss(isEmailValid, email);
+    
+    const isPasswordValid = validatePassword(password.current.value);
+    modifyTextBoxCss(isPasswordValid, password);
+  }
+
+  const modifyTextBoxCss = (validationFlag, textboxElem) =>{
+    if (validationFlag) {
+      textboxElem.current.classList.remove("border"); 
+      textboxElem.current.classList.remove("border-red-700");
+    }else{
+      textboxElem.current.classList.add("border"); 
+      textboxElem.current.classList.add("border-red-700");
+    }
+  }
 
   return (
     <div className="login-UI">
@@ -18,25 +40,28 @@ const Login = () => {
       <form
         action=""
         className="text-white bg-black absolute px-6 py-20 w-1/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center rounded-2xl opacity-75"
+        onSubmit={(e) => {e.preventDefault()}}
       >
         <h1 className="text-3xl font-bold text-left mx-10 my-9">{showLoginForm ? "Login" : "Sign Up"}</h1>
         <input
           type="text"
           placeholder="Your Name"
           className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
-          hidden={!showLoginForm}
+          hidden={showLoginForm}
         />
         <input
           type="text"
           placeholder="Email Address"
+          ref={email}
           className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
         />
         <input
           type="password"
+          ref={password}
           placeholder="Password"
           className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg"
         />
-        <button className="p-4 my-7 w-4/5 text-white bg-red-600 rounded-lg">
+        <button className="p-4 my-7 w-4/5 text-white bg-red-600 rounded-lg" onClick={validateFields}>
           {showLoginForm ? "Login" : "Create An Account"}
         </button>
         <h3>
