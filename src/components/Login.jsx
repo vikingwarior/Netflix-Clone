@@ -4,6 +4,7 @@ import CustomMessageBox from "./CustomMessageBox";
 
 import { validateEmail, validatePassword } from "../utils/formValidations";
 import { initiateLogin, initiateSignUp } from "../utils/authUtils";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showLoginForm, setshowLoginForm] = useState(true);
@@ -19,19 +20,26 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
 
-  const initiateAuthentication = () => {
+  const navigate = useNavigate();
+
+  const initiateAuthentication = async () => {
     const isSignUpReq = !showLoginForm;
     const userEmail = email.current.value;
     const userPassword = password.current.value;
 
     if (validateFields()) {
       const isAuthSuccess = isSignUpReq
-        ? initiateSignUp(userEmail, userPassword)
-        : initiateLogin(userEmail, userPassword);
+        ? await initiateSignUp(userEmail, userPassword)
+        : await initiateLogin(userEmail, userPassword);
 
-      if (isAuthSuccess && isSignUpReq) {
-        showSignUpSuccessMessage();
-        setshowLoginForm(true);
+      if (isAuthSuccess) {
+        if (isSignUpReq) {
+          showSignUpSuccessMessage();
+          setshowLoginForm(true);
+        } else {
+          navigate("/browse");
+        }
+      } else {
       }
     }
   };
