@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 
-export const initiateSignUp = (email, password, showLoginPage) => {
+export const initiateSignUp = (email, password) => {
     const isSignUpSuccessful = createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
@@ -11,8 +11,7 @@ export const initiateSignUp = (email, password, showLoginPage) => {
         return true;
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+
 
         return false;
       });
@@ -28,13 +27,13 @@ export const initiateLogin = (email, password) => {
       // ...
       console.log(user);
 
-      return true;
+      return user;
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
 
-      return true
+      handleError();
     });
 
 };
+
+const handleError = () => {};
