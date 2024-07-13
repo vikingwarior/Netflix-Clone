@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
+import appStore from "./utils/redux/appStore";
 
 import "./App.css";
 import Body from "./components/Body";
-import appStore from "./utils/redux/appStore";
 
 function App() {
   return (
