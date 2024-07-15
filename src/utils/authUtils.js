@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 
@@ -36,4 +37,12 @@ export const initiateLogin = (email, password) => {
       return false;
     });
   return isLoginSuccessful;
+};
+
+export const handleSignout = (redirect) => {
+  signOut(auth).then(() => {
+    redirect("/")
+  }).catch((error) => {
+    // An error happened.
+  });
 };
