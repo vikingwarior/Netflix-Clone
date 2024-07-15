@@ -3,7 +3,9 @@ import React from 'react'
 const Browse = () => {
   return (
     <div>
-      Browse
+      <button className='' onClick={handleSignout}>
+        Sign Out
+      </button>
     </div>
   )
 }
