@@ -1,11 +1,12 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  updateProfile
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 
-export const initiateSignUp = (email, password) => {
+export const initiateSignUp = (email, password, name) => {
   const isSignUpSuccessful = createUserWithEmailAndPassword(
     auth,
     email,
@@ -14,7 +15,12 @@ export const initiateSignUp = (email, password) => {
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
-      return true;
+
+      return updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
+        return true;
+      });
     })
     .catch(() => {
       return false;
@@ -40,9 +46,11 @@ export const initiateLogin = (email, password) => {
 };
 
 export const handleSignout = (redirect) => {
-  signOut(auth).then(() => {
-    redirect("/")
-  }).catch((error) => {
-    // An error happened.
-  });
+  signOut(auth)
+    .then(() => {
+      redirect("/");
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 };
