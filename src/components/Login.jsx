@@ -19,6 +19,7 @@ const Login = () => {
 
   const email = useRef();
   const password = useRef();
+  const name = useRef();
 
   const navigate = useNavigate();
 
@@ -26,10 +27,11 @@ const Login = () => {
     const isSignUpReq = !showLoginForm;
     const userEmail = email.current.value;
     const userPassword = password.current.value;
+    const userName = name.current.value;
 
     if (validateFields()) {
       const isAuthSuccess = isSignUpReq
-        ? await initiateSignUp(userEmail, userPassword)
+        ? await initiateSignUp(userEmail, userPassword, userName)
         : await initiateLogin(userEmail, userPassword);
 
       if (isAuthSuccess) {
@@ -106,6 +108,7 @@ const Login = () => {
           type="text"
           placeholder="Your Name"
           className="p-4 my-3 w-4/5 placeholder:text-white rounded-lg bg-gray-900"
+          ref={name}
           hidden={showLoginForm}
         />
         <input
