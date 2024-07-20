@@ -5,8 +5,9 @@ import {
   updateProfile
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
+import { addUser } from "../utils/redux/userSlice";
 
-export const initiateSignUp = (email, password, name) => {
+export const initiateSignUp = (email, password, name, dispatchHook) => {
   const isSignUpSuccessful = createUserWithEmailAndPassword(
     auth,
     email,
@@ -19,6 +20,8 @@ export const initiateSignUp = (email, password, name) => {
       return updateProfile(auth.currentUser, {
         displayName: name,
       }).then(() => {
+        const { uid, email, displayName } = auth.currentUser;
+        dispatchHook(addUser({ uid: uid, email: email, displayName: displayName }));
         return true;
       });
     })

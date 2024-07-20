@@ -5,6 +5,7 @@ import CustomMessageBox from "./CustomMessageBox";
 import { validateEmail, validatePassword } from "../utils/formValidations";
 import { initiateLogin, initiateSignUp } from "../utils/authUtils";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [showLoginForm, setshowLoginForm] = useState(true);
@@ -22,6 +23,7 @@ const Login = () => {
   const name = useRef();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const initiateAuthentication = async () => {
     const isSignUpReq = !showLoginForm;
@@ -31,7 +33,7 @@ const Login = () => {
 
     if (validateFields()) {
       const isAuthSuccess = isSignUpReq
-        ? await initiateSignUp(userEmail, userPassword, userName)
+        ? await initiateSignUp(userEmail, userPassword, userName, dispatch)
         : await initiateLogin(userEmail, userPassword);
 
       if (isAuthSuccess) {
