@@ -21,7 +21,7 @@ export const initiateSignUp = (email, password, name, dispatchHook) => {
         displayName: name,
       }).then(() => {
         const { uid, email, displayName } = auth.currentUser;
-        dispatchHook(addUser({ uid: uid, email: email, displayName: displayName }));
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         return true;
       });
     })
