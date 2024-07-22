@@ -13,6 +13,7 @@ const AuthHeader = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // onAuthStateChanged returns a method that can be used to remove the observer
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
