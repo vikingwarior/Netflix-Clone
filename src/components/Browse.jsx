@@ -1,15 +1,15 @@
-import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+
+import Header from './Header';
+import AuthHeader from "./AuthHeader"
 
 import { handleSignout } from '../utils/authUtils';
-import Header from './Header';
 
 const Browse = () => {
-  const navigate = useNavigate();
   return (
     <div>
+      <AuthHeader/>
       <Header/>
-      <button className='' onClick={() => handleSignout(navigate)}>
+      <button className='' onClick={() => handleSignout()}>
         Sign Out
       </button>
     </div>
