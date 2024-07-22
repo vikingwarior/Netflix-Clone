@@ -40,12 +40,6 @@ export const initiateLogin = (email, password) => {
   return isLoginSuccessful;
 };
 
-export const handleSignout = (redirect) => {
+export const handleSignout = () => {
   signOut(auth)
-    .then(() => {
-      redirect("/");
-    })
-    .catch(() => {
-
-    });
 };
