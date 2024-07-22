@@ -13,17 +13,14 @@ export const initiateSignUp = (email, password, name, dispatchHook) => {
     email,
     password
   )
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
+    .then(async (_userCredential) => {
 
-      return updateProfile(auth.currentUser, {
+      await updateProfile(auth.currentUser, {
         displayName: name,
-      }).then(() => {
-        const { uid, email, displayName } = auth.currentUser;
-        dispatchHook(addUser({ uid: uid, email: email, displayName: displayName }));
-        return true;
       });
+      const { uid, email, displayName } = auth.currentUser;
+      dispatchHook(addUser({ uid: uid, email: email, displayName: displayName }));
+      return true;
     })
     .catch(() => {
       return false;
@@ -34,12 +31,7 @@ export const initiateSignUp = (email, password, name, dispatchHook) => {
 
 export const initiateLogin = (email, password) => {
   const isLoginSuccessful = signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-      console.log(user);
-
+    .then(() => {
       return true;
     })
     .catch(() => {
@@ -48,12 +40,6 @@ export const initiateLogin = (email, password) => {
   return isLoginSuccessful;
 };
 
-export const handleSignout = (redirect) => {
+export const handleSignout = () => {
   signOut(auth)
-    .then(() => {
-      redirect("/");
-    })
-    .catch((error) => {
-      // An error happened.
-    });
 };
