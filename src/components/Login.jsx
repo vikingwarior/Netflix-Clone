@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 
 import CustomMessageBox from "./CustomMessageBox";
-import AuthHeader from "./AuthHeader";
 
 import { validateEmail, validatePassword } from "../utils/formValidations";
 import { initiateLogin, initiateSignUp } from "../utils/authUtils";
