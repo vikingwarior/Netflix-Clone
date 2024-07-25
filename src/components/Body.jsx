@@ -4,13 +4,11 @@ import Login from "./Login";
 import Browse from "./Browse";
 import Wrapper from "./Wrapper";
 
-import { useDispatch } from "react-redux";
-
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Wrapper />,
-    Children: [
+    children: [
       {
         path: "/",
         element: <Login />,
