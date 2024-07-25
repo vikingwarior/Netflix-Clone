@@ -1,6 +1,5 @@
 
 import Header from './Header';
-import AuthHeader from "./AuthHeader"
 
 import { handleSignout } from '../utils/authUtils';
 

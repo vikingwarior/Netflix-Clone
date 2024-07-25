@@ -1,4 +1,4 @@
-import { BrowserRouter, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import AuthHeader from './AuthHeader'
 
 const Wrapper = () => {
