@@ -1,19 +1,25 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  updateProfile
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
+import { addUser } from "../utils/redux/userSlice";
 
-export const initiateSignUp = (email, password) => {
+export const initiateSignUp = (email, password, name, dispatchHook) => {
   const isSignUpSuccessful = createUserWithEmailAndPassword(
     auth,
     email,
     password
   )
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
+    .then(async (_userCredential) => {
+
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      const { uid, email, displayName } = auth.currentUser;
+      dispatchHook(addUser({ uid: uid, email: email, displayName: displayName }));
       return true;
     })
     .catch(() => {
@@ -25,12 +31,7 @@ export const initiateSignUp = (email, password) => {
 
 export const initiateLogin = (email, password) => {
   const isLoginSuccessful = signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-      console.log(user);
-
+    .then(() => {
       return true;
     })
     .catch(() => {
@@ -39,10 +40,6 @@ export const initiateLogin = (email, password) => {
   return isLoginSuccessful;
 };
 
-export const handleSignout = (redirect) => {
-  signOut(auth).then(() => {
-    redirect("/")
-  }).catch((error) => {
-    // An error happened.
-  });
+export const handleSignout = () => {
+  signOut(auth)
 };
