@@ -7,7 +7,6 @@ import { handleSignout } from '../utils/authUtils';
 const Browse = () => {
   return (
     <div>
-      <AuthHeader/>
       <Header/>
       <button className='' onClick={() => handleSignout()}>
         Sign Out
