@@ -1,13 +1,14 @@
 import { handleSignout } from "../utils/authUtils";
 import { LOGO_URL, USER_IMAGE_URL } from "../utils/constants";
+import BrowseOption from "./BrowseOption";
 
 const Header = () => {
   const browseOptions = [
-    "Home",
-    "TV Shows",
-    "New & Popular",
-    "My List",
-    "Browse By Languages",
+    { label: "Home", url: "../../../browse" },
+    { label: "TV Shows", url: "../../../browse/genre/83" },
+    { label: "New & Popular", url: "../../../browse/genre/34399" },
+    { label: "My List", url: "../../../browse/my-list" },
+    { label: "Browse By Languages", url: "../../../browse/original-audio" },
   ];
 
   return (
@@ -15,10 +16,8 @@ const Header = () => {
       <div className="flex">
         <img src={LOGO_URL} alt="netflix-logo" className="h-12 px-10" />
         <ul className="flex items-center justify-start">
-          {browseOptions.map((browseOption) => (
-            <li className="mr-5 cursor-pointer hover:text-gray-700">
-              {browseOption}
-            </li>
+          {browseOptions.map(({label, url}) => (
+           <BrowseOption label={label} url={url}/>
           ))}
         </ul>
       </div>
@@ -65,7 +64,11 @@ const Header = () => {
           </button>
         </div>
         <div id="header-user-menu" className="mr-7 cursor-pointer flex">
-          <img src={USER_IMAGE_URL} alt="user-img" className="mr-3 cursor-pointer" />
+          <img
+            src={USER_IMAGE_URL}
+            alt="user-img"
+            className="mr-3 cursor-pointer"
+          />
           <button className="" onClick={handleSignout}>
             Sign Out
           </button>
