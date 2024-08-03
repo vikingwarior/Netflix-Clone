@@ -12,3 +12,5 @@ export const TMDB_API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTg4Y2FkYzdjYzhjMDU0ZGM4OTE3ZGI5MmFmMGZlOSIsIm5iZiI6MTcyMjQ1MjE3NC43MzA3NDYsInN1YiI6IjY2YWE4Mzg3YzFhZmMwZmE4N2JmZTNjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sqslciM7o7i2ZRfXW_5wiKT3gZ7xVaHaK-CBPXxMr8k",
   },
 };
+
+export const TMDB_IMAGE_API = "https://image.tmdb.org/t/p/original";
