@@ -14,3 +14,8 @@ export const TMDB_API_OPTIONS = {
 };
 
 export const TMDB_IMAGE_API = "https://image.tmdb.org/t/p/original";
+
+export const TMBD_VIDEO_API = {
+  idPrefix : "https://api.themoviedb.org/3/movie/",
+  idSuffix : "/videos?language=en-US"
+}
