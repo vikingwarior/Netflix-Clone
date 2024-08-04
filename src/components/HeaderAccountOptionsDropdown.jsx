@@ -9,7 +9,7 @@ const HeaderAccountOptionsDropdown = () => {
       <img
         src={USER_IMAGE_URL}
         alt="user-img"
-        className="cursor-pointer relative"
+        className="cursor-pointer"
       />
       <div id="bridge" className=" cursor-pointer absolute w-full right-0 px-6 py-2"></div>
       <div id="user-menu-content" className="absolute right-0 py-2 mt-4 bg-black opacity-80" hidden={hideUserMenu}>
