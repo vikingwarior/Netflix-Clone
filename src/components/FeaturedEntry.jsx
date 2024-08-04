@@ -28,14 +28,13 @@ const FeaturedEntry = () => {
     return;
   }
 
-  const { id, overview, original_title, backdrop_path, vote_average } =
+  const { id, overview, original_title, backdrop_path } =
     selectedEntry;
 
   return (
-    <div className="">
+    <div className="relative">
       <FeaturedEntryAttributes
         title={original_title}
-        rating={vote_average}
         summary={overview}
       />
       <FeaturedEntryTrailer entry_id={id} banner_path={backdrop_path} />
