@@ -5,7 +5,7 @@ import { USER_IMAGE_URL } from "../utils/constants";
 const HeaderAccountOptionsDropdown = () => {
   const [hideUserMenu, setHideUserMenu] = useState(true);
   return (
-    <div id="header-user-menu" className="relative mr-7"  onMouseEnter={() => setHideUserMenu(false)} onMouseLeave={() => setHideUserMenu(true)}>
+    <div id="header-user-menu" className="relative z-50 mr-7"  onMouseEnter={() => setHideUserMenu(false)} onMouseLeave={() => setHideUserMenu(true)}>
       <img
         src={USER_IMAGE_URL}
         alt="user-img"
