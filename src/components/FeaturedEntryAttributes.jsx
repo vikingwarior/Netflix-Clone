@@ -1,8 +1,8 @@
-const FeaturedEntryAttributes = ({ title, rating, summary }) => {
+const FeaturedEntryAttributes = ({ title, summary }) => {
   return (
-    <div id="banner-data" className="mt-auto ">
+    <div id="banner-data" className="mt-auto">
       <p className="text-5xl font-bold">{title}</p>
-      <p className="my-12 text-2xl">{summary}</p>
+      <p className="my-12 text-2xl w-1/2">{summary}</p>
       <div id="banner-btn-container" className="flex text-3xl font-semibold">
         <button className="flex items-center mr-4 px-8 py-3 rounded-md bg-white text-black">
           <svg
