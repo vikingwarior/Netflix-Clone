@@ -8,7 +8,7 @@ const Browse = () => {
   return (
     <div className="bg-neutral-900 text-white">
       <Header />
-      <div className="px-10 pb-4">
+      <div className="pb-4">
         <Outlet />
       </div>
     </div>
