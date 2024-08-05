@@ -27,9 +27,15 @@ const FeaturedEntryTrailer = ({ entry_id, banner_path }) => {
     id: "65f9c571bd990c018622a002",
   };
 
-  console.log(randomMovieClip);
-
-  return <div></div>;
+  return (
+    <div id="trailer-frame">
+      <iframe
+        src={"https://www.youtube.com/embed/"+ randomMovieClip.key +"?modestbranding=1&rel=0&controls=0&iv_load_policy=3&fs=0&disablekb=1&cc_load_policy=0&autoplay=1"}
+        allow="autoplay; encrypted-media; gyroscope; picture-in-picture;"
+        className="aspect-video w-full pointer-events-none overflow-x-hidden"
+      />
+    </div>
+  );
 };
 
 export default FeaturedEntryTrailer;
