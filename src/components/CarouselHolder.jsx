@@ -3,15 +3,24 @@ import React from "react";
 /**
     genre:
 
-    1.Comedy          35
-    2.Animation       16
-    3.Romance         10749
-    4.Family          10751
-    5.Action          28
-    6.Drama           18
+    35 : "Comedy",
+    16 : "Animation",
+    10749 : "Romance",
+    10751 : "Family"
+    28 : "Action",
+    18 : "Drama"
  */
 const CarouselHolder = () => {
-  return <div>Carousel Holder</div>;
+  const genreId = [
+    { key: 35, value: "Comedy" },
+    { key: 16, value: "Animation" },
+    { key: 10749, value: "Romance" },
+    { key: 10751, value: "Family" },
+    { key: 28, value: "Action" },
+    { key: 18, value: "Drama" },
+  ];
+
+  return <div id="bottom-container">{genreId.map()}</div>;
 };
 
 export default CarouselHolder;
