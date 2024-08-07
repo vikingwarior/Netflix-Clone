@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import useMovieClip from "../utils/hooks/useMovieClip";
-import Shimmer from "./Shimmer";
 
 const FeaturedEntryTrailer = ({ entry_id, banner_path }) => {
     useMovieClip(entry_id);
