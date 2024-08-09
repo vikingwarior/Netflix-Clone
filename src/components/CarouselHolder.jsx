@@ -1,4 +1,4 @@
-import React from "react";
+import Carousel from "./Carousel";
 
 /**
     genre:
@@ -20,7 +20,9 @@ const CarouselHolder = () => {
     { key: 18, value: "Drama" },
   ];
 
-  return <div id="bottom-container">{genreId.map()}</div>;
+  return <div id="bottom-container">{genreId.map(({key, value}) => {
+    <Carousel categoryId={key} categoryName={value}/>
+  })}</div>;
 };
 
 export default CarouselHolder;
