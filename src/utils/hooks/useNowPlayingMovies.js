@@ -3,7 +3,6 @@ import useTmdbResponse from "./useTmdbResponse";
 
 import { updateMoviesData } from "../redux/moviesSlice";
 
-
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
