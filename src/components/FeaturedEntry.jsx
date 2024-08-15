@@ -1,18 +1,28 @@
+import { updateRandomMovieIndex } from "../utils/redux/moviesSlice";
 import FeaturedEntryAttributes from "./FeaturedEntryAttributes";
 import FeaturedEntryTrailer from "./FeaturedEntryTrailer";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const FeaturedEntry = () => {
-  // Select a random movie from fetched movies
-  const randomMovieIndex = Math.floor(Math.random() * 20);
-  const selectedEntry = useSelector((store) => {
-    return store.movies.nowPlayingMovies && store.movies.nowPlayingMovies;
-  })[2];
+  const dispatch = useDispatch();
 
-  if (selectedEntry === null || selectedEntry === undefined) {
+  // Select a random movie from fetched movies
+  let [movies, randomMovieIndex] = useSelector((store) => [
+    store.movies?.nowPlayingMovies,
+    store.movies?.randomMovieIndex,
+  ]);
+
+  if (!movies) return;
+
+  if (!randomMovieIndex){
+    randomMovieIndex = dispatch(
+      updateRandomMovieIndex(Math.floor(Math.random() * 20))
+    );
+
     return;
   }
+  const selectedEntry = movies[randomMovieIndex];
 
   const { id, overview, original_title, backdrop_path } = selectedEntry;
 
