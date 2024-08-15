@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
   name: "nowPlayingMovies",
   initialState: {
-    nowPlayingMovies: [],
-    moviePromoClips: []
+    nowPlayingMovies: null,
+    moviePromoClips: null,
+    randomMovieIndex: null,
   },
   reducers: {
     updateMoviesData: (state, action) => {
@@ -13,13 +14,21 @@ const moviesSlice = createSlice({
     updatePromoClips: (state, action) => {
       state.moviePromoClips = action.payload;
     },
+    updateRandomMovieIndex: (state, action) => {
+      state.randomMovieIndex = action.payload;
+    },
     clearSlice: (state) => {
       state.nowPlayingMovies.length = 0;
       state.moviePromoClips.length = 0;
-    }
+    },
   },
 });
 
-export const { updateMoviesData, updatePromoClips, clearSlice } = moviesSlice.actions;
+export const {
+  updateMoviesData,
+  updatePromoClips,
+  updateRandomMovieIndex,
+  clearSlice,
+} = moviesSlice.actions;
 
 export default moviesSlice.reducer;
