@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -14,16 +13,27 @@ const useNowPlayingMovies = () => {
   );
 
   const getNowPlayingMovies = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?page=1&sort_by=popularity.desc",
-      TMDB_API_OPTIONS
-    );
-    const json = await data.json();
-    dispatch(updateMoviesData(json.results));
+    let data = [];
+
+    for (let pageNo = 1; pageNo <= 5; pageNo++) {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/discover/movie?page=" +
+          pageNo +
+          "&sort_by=popularity.desc",
+        TMDB_API_OPTIONS
+      );
+
+      const json = await response.json();
+      const results = json.results;
+
+      data.push(...results);
+    }
+    data?.length !== 0 && dispatch(updateMoviesData(data));
   };
 
   useEffect(() => {
     !nowPlayingMovies && getNowPlayingMovies();
+    // eslint-disable-next-line
   }, []);
 };
 
