@@ -1,6 +1,6 @@
 const FeaturedEntryAttributes = ({ title, summary }) => {
   return (
-    <div id="banner-data" className="absolute w-screen aspect-video overflow-x-hidden py-56 bg-gradient-to-r from-black px-10">
+    <div id="banner-data" className="absolute w-full aspect-video py-56 bg-gradient-to-r from-black px-10">
       <p className="text-5xl font-bold">{title}</p>
       <p className="my-12 text-2xl w-1/2">{summary}</p>
       <div id="banner-btn-container" className="flex text-3xl font-semibold">

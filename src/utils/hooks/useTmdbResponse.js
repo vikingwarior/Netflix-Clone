@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { TMDB_API_OPTIONS } from "../constants";
-import { clearSlice } from "../redux/moviesSlice";
 
 const useTmdbResponse = (endpointUrl) => {
   const [endPointResult, setEndPointResult] = useState([]);
@@ -13,6 +12,7 @@ const useTmdbResponse = (endpointUrl) => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line
   }, []);
 
   return endPointResult && endPointResult;

@@ -1,17 +1,40 @@
-import { useDispatch } from "react-redux";
-import useTmdbResponse from "./useTmdbResponse";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import { updateMoviesData } from "../redux/moviesSlice";
 
+import { TMDB_API_OPTIONS } from "../constants";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
-  const resultData = useTmdbResponse(
-    "https://api.themoviedb.org/3/discover/movie?page=1&sort_by=popularity.desc"
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
   );
 
-  dispatch(updateMoviesData(resultData));
+  const getNowPlayingMovies = async () => {
+    let data = [];
+
+    for (let pageNo = 1; pageNo <= 5; pageNo++) {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/discover/movie?page=" +
+          pageNo +
+          "&sort_by=popularity.desc",
+        TMDB_API_OPTIONS
+      );
+
+      const json = await response.json();
+      const results = json.results;
+
+      data.push(...results);
+    }
+    data?.length !== 0 && dispatch(updateMoviesData(data));
+  };
+
+  useEffect(() => {
+    !nowPlayingMovies && getNowPlayingMovies();
+    // eslint-disable-next-line
+  }, []);
 };
 
 export default useNowPlayingMovies;
