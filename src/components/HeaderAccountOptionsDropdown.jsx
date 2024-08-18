@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const HeaderAccountOptionsDropdown = () => {
   const [hideUserMenu, setHideUserMenu] = useState(true);
 
-  const userDisplayName = useSelector(store => store.user.displayName);
+  const userDisplayName = useSelector(store => store.user?.displayName);
 
   return (
     <div id="header-user-menu" className="relative z-50 mr-7"  onMouseEnter={() => setHideUserMenu(false)} onMouseLeave={() => setHideUserMenu(true)}>
