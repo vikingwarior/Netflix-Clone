@@ -7,7 +7,7 @@ const Browse = () => {
   useNowPlayingMovies();
 
   return (
-    <div className="bg-neutral-900 text-white">
+    <div className=" text-white">
       <Header />
       <div className="pb-4 px-0">
         <Outlet />
