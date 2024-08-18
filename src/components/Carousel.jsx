@@ -16,13 +16,13 @@ const Carousel = ({ categoryId, categoryName }) => {
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? categoryItems.length - 1 : prevIndex - 1
+      prevIndex === 0 ? (categoryItems.length / 4) - 1 : prevIndex - 1
     );
   };
 
   const handleNextClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === categoryItems.length - 1 ? 0 : prevIndex + 1
+      prevIndex === (categoryItems.length / 4) - 1 ? 0 : prevIndex + 1
     );
   };
 
