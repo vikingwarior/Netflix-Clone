@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Carousel = ({ categoryId, categoryName }) => {
-  let categoryItemIndex = 0;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prev = () => {
@@ -24,8 +23,8 @@ const Carousel = ({ categoryId, categoryName }) => {
 
   return (
     <div id={`${categoryName}-carousel`} className="carousel-container">
-      <div className="flex items-center">
-        <h1 className="mx-4">{categoryName}</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="mr-4 py-4 text-3xl font-bold">{categoryName}</h1>
         <div>
           <button className="mx-2" onClick={prev}>
             Left

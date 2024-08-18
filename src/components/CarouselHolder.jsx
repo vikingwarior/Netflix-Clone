@@ -21,7 +21,7 @@ const CarouselHolder = () => {
   ];
 
   return (
-    <div id="bottom-container">
+    <div id="bottom-container" className="relative z-50 -mt-80 px-8">
       {genreId.map(({ key, value }) => <Carousel categoryId={key} categoryName={value} />)}
     </div>
   );
