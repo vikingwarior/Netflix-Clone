@@ -14,7 +14,7 @@ const FeaturedEntryTrailer = ({ entry_id, banner_path }) => {
         src={
           "https://www.youtube.com/embed/" +
           randomMovieClip?.key +
-          "?disablekb=1&cc_load_policy=0&autoplay=1&mute=1"
+          "?disablekb=1&cc_load_policy=0&autoplay=1&mute=1&loop=1"
         }
         className="aspect-video w-full pointer-events-none overflow-x-hidden"
       />

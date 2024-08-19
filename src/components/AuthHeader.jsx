@@ -25,6 +25,7 @@ const AuthHeader = () => {
       }
     });
     return () => unsubscribe();
+    // eslint-disable-next-line
   }, []);
   return <div id="authHeader"></div>;
 };
