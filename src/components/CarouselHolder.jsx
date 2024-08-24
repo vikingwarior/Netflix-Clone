@@ -1,26 +1,23 @@
 import Carousel from "./Carousel";
 
-/**
-    genre:
+import { useSelector } from "react-redux";
 
-    35 : "Comedy",
-    16 : "Animation",
-    10749 : "Romance",
-    10751 : "Family"
-    28 : "Action",
-    18 : "Drama"
- */
+import { GENRE_IDs } from "../utils/constants";
+
 const CarouselHolder = () => {
-  const genreId = [
-    { key: 35, value: "Comedy" },
-    { key: 10751, value: "Family" },
-    { key: 28, value: "Action" },
-    { key: 18, value: "Drama" },
-  ];
+
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  if (!movies) return null;
 
   return (
     <div id="bottom-container" className="relative z-10 -mt-80 px-8">
-      {genreId.map(({ key, value }) => <Carousel categoryId={key} categoryName={value} />)}
+      {GENRE_IDs.map(({ id, name }) => {
+        const moviesToDisplay = movies.filter(({ genre_ids }) =>
+          genre_ids.includes(id)
+        );
+
+        return <Carousel carouselTitle={name} displayItems={moviesToDisplay} />
+      })}
     </div>
   );
 };

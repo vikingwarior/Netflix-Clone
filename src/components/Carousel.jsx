@@ -2,17 +2,9 @@ import CarouselItem from "./CarouselItem";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
-const Carousel = ({ categoryId, categoryName }) => {
+const Carousel = ({ carouselTitle, displayItems }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (!movies) return null;
-
-  const displayItems = movies.filter(({ genre_ids }) =>
-    genre_ids.includes(categoryId)
-  );
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) =>
@@ -28,11 +20,11 @@ const Carousel = ({ categoryId, categoryName }) => {
 
   return (
     <div
-      id={`${categoryName}-carousel`}
+      id={`${carouselTitle}-carousel`}
       className="carousel-container relative"
     >
       <div className="flex items-center justify-between">
-        <h1 className="mr-4 py-4 text-3xl font-bold">{categoryName}</h1>
+        <h1 className="mr-4 py-4 text-3xl font-bold">{carouselTitle}</h1>
         <div>
           <button className="mx-2" onClick={handlePrevClick}>
             <FaArrowLeft />
