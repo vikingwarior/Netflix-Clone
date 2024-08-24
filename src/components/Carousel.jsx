@@ -10,19 +10,19 @@ const Carousel = ({ categoryId, categoryName }) => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return null;
 
-  const categoryItems = movies.filter(({ genre_ids }) =>
+  const displayItems = movies.filter(({ genre_ids }) =>
     genre_ids.includes(categoryId)
   );
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? (categoryItems.length / 4) - 1 : prevIndex - 1
+      prevIndex === 0 ? (displayItems.length / 4) - 1 : prevIndex - 1
     );
   };
 
   const handleNextClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === (categoryItems.length / 4) - 1 ? 0 : prevIndex + 1
+      prevIndex === (displayItems.length / 4) - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -47,11 +47,11 @@ const Carousel = ({ categoryId, categoryName }) => {
           className="flex transition-transform ease-out duration-500"
           style={{
             transform: `translateX(-${
-              currentIndex * (1000 / categoryItems.length)
+              currentIndex * (1000 / displayItems.length)
             }%)`,
           }}
         >
-          {categoryItems.map(
+          {displayItems.map(
             ({ id, backdrop_path, original_title, popularity }, index) => (
               <div key={index} className="carousel-entry flex-shrink-0 w-1/5">
                 <CarouselItem

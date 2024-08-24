@@ -5,6 +5,7 @@ import Browse from "./Browse";
 import Wrapper from "./Wrapper";
 import FeaturedEntry from "./FeaturedEntry";
 import CarouselHolder from "./CarouselHolder";
+import RecommendationContainer from "./RecommendationContainer";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const appRouter = createBrowserRouter([
               <>
                 <FeaturedEntry />
                 <CarouselHolder />
+                <RecommendationContainer/>
               </>
             ),
           },
