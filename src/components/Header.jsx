@@ -13,7 +13,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="fixed z-50 w-screen flex justify-between align-middle items-center font-medium py-1 bg-gradient-to-b from-black text-white">
+    <div className="fixed z-20 w-screen flex justify-between align-middle items-center font-medium py-1 bg-gradient-to-b from-black text-white">
       <div className="flex">
         <img src={LOGO_URL} alt="netflix-logo" className="h-12 px-10" />
         <ul className="flex items-center justify-start">
