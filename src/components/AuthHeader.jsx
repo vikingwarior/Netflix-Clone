@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 import { addUser, removeUser } from "../utils/redux/userSlice";
 
-import {auth} from "../utils/firebaseConfig"
+import { auth } from "../utils/firebaseConfig";
 
 const AuthHeader = () => {
   const dispatch = useDispatch();
@@ -20,8 +20,8 @@ const AuthHeader = () => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        navigate(location);
-    }else{
+        location === "/" ? navigate("/browse") : navigate(location);
+      } else {
         dispatch(removeUser());
         navigate("/");
       }
@@ -29,7 +29,6 @@ const AuthHeader = () => {
     return () => unsubscribe();
     // eslint-disable-next-line
   }, []);
-  return <div id="authHeader"></div>;
 };
 
 export default AuthHeader;
