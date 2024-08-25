@@ -659,9 +659,9 @@ const RecommendationContainer = () => {
   ];
 
   return (
-    <div className="w-3/5 h-auto absolute z-30 top-1/2 left-1/2 p-4 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 backdrop-blur-md rounded-2xl text-white">
+    <div className="w-full h-screen bg-black/80 backdrop-blur-lg m-0 text-white">
       <form
-        className="text-center my-6"
+        className="text-center "
         onSubmit={(e) => {
           e.preventDefault();
         }}
