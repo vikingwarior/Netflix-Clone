@@ -659,7 +659,7 @@ const RecommendationContainer = () => {
   ];
 
   return (
-    <div className="w-1/2 h-auto absolute z-30 top-1/2 left-1/2 p-4 transform -translate-x-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-md rounded-2xl text-white">
+    <div className="w-3/5 h-auto absolute z-30 top-1/2 left-1/2 p-4 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 backdrop-blur-md rounded-2xl text-white">
       <form
         className="text-center my-6"
         onSubmit={(e) => {
@@ -674,7 +674,13 @@ const RecommendationContainer = () => {
         />
         <button className="py-2 px-4 rounded-md bg-red-700">Search</button>
       </form>
-      {displayItemsArray.map(displayItemsArrayElem => <Carousel carouselTitle="test" displayItems={displayItemsArrayElem} showNavigationBtns={false} />)}
+      {displayItemsArray.map((displayItemsArrayElem) => (
+        <Carousel
+          carouselTitle="test"
+          displayItems={displayItemsArrayElem}
+          showNavigationBtns={false}
+        />
+      ))}
     </div>
   );
 };
