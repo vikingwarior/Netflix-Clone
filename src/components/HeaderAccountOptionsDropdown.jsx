@@ -9,7 +9,7 @@ const HeaderAccountOptionsDropdown = () => {
   const userDisplayName = useSelector(store => store.user?.displayName);
 
   return (
-    <div id="header-user-menu" className="relative z-50 mr-7"  onMouseEnter={() => setHideUserMenu(false)} onMouseLeave={() => setHideUserMenu(true)}>
+    <div id="header-user-menu" className="relative z-20 mr-7"  onMouseEnter={() => setHideUserMenu(false)} onMouseLeave={() => setHideUserMenu(true)}>
       <img
         src={USER_IMAGE_URL}
         alt="user-img"
@@ -23,7 +23,7 @@ const HeaderAccountOptionsDropdown = () => {
         <p className="px-4 py-2 over w-full text-nowrap">Option 2</p>
         <p className="px-4 py-2 over w-full text-nowrap">Option 3</p>
         <hr className="ml-auto mr-auto w-10/12" />
-        <button className="mx-auto my-2 px-4 py-2 text-nowrap w-full font-bold text-white bg-red-500" onClick={handleSignout}>
+        <button className="my-2 px-2 py-2 text-nowrap w-full font-bold text-white bg-red-700" onClick={handleSignout}>
           Sign out of Netflix
         </button>
       </div>
