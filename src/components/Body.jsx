@@ -4,7 +4,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import Wrapper from "./Wrapper";
 import FeaturedEntry from "./FeaturedEntry";
-import CarouselHolder from "./CarouselHolder";
+import BrowseCarouselHolder from "./BrowseCarouselHolder";
 import RecommendationContainer from "./RecommendationContainer";
 
 const appRouter = createBrowserRouter([
@@ -25,7 +25,7 @@ const appRouter = createBrowserRouter([
             element: (
               <>
                 <FeaturedEntry />
-                <CarouselHolder />
+                <BrowseCarouselHolder />
                 <RecommendationContainer/>
               </>
             ),
