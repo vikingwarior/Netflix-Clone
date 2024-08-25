@@ -7,36 +7,38 @@ import FeaturedEntry from "./FeaturedEntry";
 import BrowseCarouselHolder from "./BrowseCarouselHolder";
 import RecommendationContainer from "./RecommendationContainer";
 
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <Wrapper />,
-    children: [
-      {
-        path: "/",
-        element: <Login />,
-      },
-      {
-        path: "/browse",
-        element: <Browse />,
-        children: [
-          {
-            path: "/browse",
-            element: (
-              <>
-                <FeaturedEntry />
-                <BrowseCarouselHolder />
-                <RecommendationContainer/>
-              </>
-            ),
-          },
-        ],
-      },
-    ],
-  },
-]);
-
 const Body = () => {
+
+
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Wrapper />,
+      children: [
+        {
+          path: "/",
+          element: <Login />,
+        },
+        {
+          path: "/browse",
+          element: <Browse />,
+          children: [
+            {
+              path: "/browse",
+              element: (
+                <>
+                  <FeaturedEntry />
+                  <BrowseCarouselHolder />
+                  <RecommendationContainer/>
+                </>
+              ),
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+
   return <RouterProvider router={appRouter} />;
 };
 
