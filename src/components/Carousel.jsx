@@ -42,7 +42,7 @@ const Carousel = ({
       </div>
       <div className="overflow-hidden">
         <div
-          className="flex transition-transform ease-out duration-500"
+          className="flex flex-shrink-0 transition-transform ease-out duration-500"
           style={{
             transform: `translateX(-${
               currentIndex * (1000 / displayItems.length)
@@ -50,12 +50,12 @@ const Carousel = ({
           }}
         >
           {displayItems.map(
-            ({ id, backdrop_path, title, popularity }, index) => (
-              <div key={index} className="carousel-entry flex-shrink-0 w-1/5">
+            ({ id, poster_path, title, popularity }, index) => (
+              <div key={index} className="carousel-entry w-1/5">
                 <CarouselItem
                   key={id}
                   entryId={id}
-                  entryBanner={backdrop_path}
+                  entryBanner={poster_path}
                   entryTitle={title}
                   entityRating={popularity}
                 />
