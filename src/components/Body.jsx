@@ -8,8 +8,6 @@ import BrowseCarouselHolder from "./BrowseCarouselHolder";
 import RecommendationContainer from "./RecommendationContainer";
 
 const Body = () => {
-
-
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -29,9 +27,12 @@ const Body = () => {
                 <>
                   <FeaturedEntry />
                   <BrowseCarouselHolder />
-                  <RecommendationContainer/>
                 </>
               ),
+            },
+            {
+              path: "/browse/suggest",
+              element: <RecommendationContainer />,
             },
           ],
         },
