@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const recommendationsSlice = createSlice({
-    name: recommendations,
+    name: "recommendations",
     initialState: {
         movieRecommendations: []
     },
