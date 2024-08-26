@@ -1,13 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import Login from "./Login";
 import Browse from "./Browse";
 import Wrapper from "./Wrapper";
-import FeaturedEntry from "./FeaturedEntry";
-import BrowseCarouselHolder from "./BrowseCarouselHolder";
 import RecommendationContainer from "./RecommendationContainer";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
+  const FeaturedEntry = lazy(() => import("./FeaturedEntry"));
+  const BrowseCarouselHolder = lazy(() => import("./BrowseCarouselHolder"));
+
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -24,10 +27,10 @@ const Body = () => {
             {
               path: "/browse",
               element: (
-                <>
+                <Suspense fallback={<Shimmer/>}>
                   <FeaturedEntry />
                   <BrowseCarouselHolder />
-                </>
+                </Suspense>
               ),
             },
             {
