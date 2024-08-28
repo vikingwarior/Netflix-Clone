@@ -13,6 +13,11 @@ export const TMBD_VIDEO_API = {
   idSuffix: "/videos?language=en-US",
 };
 
+export const TMDB_MOVIE_SEARCH_API = {
+  idPrefix: "https://api.themoviedb.org/3/search/movie?query=",
+  idSuffix: "&include_adult=true&language=en-US&page=1",
+};
+
 export const TMDB_API_OPTIONS = {
   method: "GET",
   headers: {

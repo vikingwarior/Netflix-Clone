@@ -9,7 +9,11 @@ import {
   addOrUpdateTmdbResponse,
 } from "../utils/redux/recommendationsSlice";
 
-import { GEMINI_KEY, TMDB_API_OPTIONS } from "../utils/constants";
+import {
+  GEMINI_KEY,
+  TMDB_MOVIE_SEARCH_API,
+  TMDB_API_OPTIONS,
+} from "../utils/constants";
 
 const RecommendationContainer = () => {
   const geminiObject = new GeminiUtils(GEMINI_KEY);
@@ -48,7 +52,9 @@ const RecommendationContainer = () => {
 
   const getMovieSearchResults = async (movieName) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=true&language=en-US&page=1`,
+      TMDB_MOVIE_SEARCH_API.idPrefix +
+        movieName +
+        TMDB_MOVIE_SEARCH_API.idSuffix,
       TMDB_API_OPTIONS
     );
     const json = await response?.json();
