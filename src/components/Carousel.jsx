@@ -49,9 +49,9 @@ const Carousel = ({
             }%)`,
           }}
         >
-          {displayItems.map(
-            ({ id, poster_path, title, popularity }, index) => (
-              <div key={index} className="carousel-entry w-1/5">
+          {displayItems.map(({ id, poster_path, title, popularity }, index) => (
+            <div key={index} className="carousel-entry w-1/5">
+              {poster_path && (
                 <CarouselItem
                   key={id}
                   entryId={id}
@@ -59,9 +59,9 @@ const Carousel = ({
                   entryTitle={title}
                   entityRating={popularity}
                 />
-              </div>
-            )
-          )}
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
