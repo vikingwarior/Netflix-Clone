@@ -11,7 +11,7 @@ const recommendationsSlice = createSlice({
       state.movieRecommendations = action.payload;
     },
     addOrUpdateTmdbResponse: (state, action) => {
-      state.movieRecommendations = action.payload;
+      state.tmdbResponse = action.payload;
     },
     clearSlice: (state) => {
       state.movieRecommendations.length = 0;
@@ -20,7 +20,7 @@ const recommendationsSlice = createSlice({
   },
 });
 
-export const { addOrUpdateRecommendations, clearSlice } =
+export const { addOrUpdateRecommendations, addOrUpdateTmdbResponse, clearSlice } =
   recommendationsSlice.actions;
 
 export default recommendationsSlice.reducer;
