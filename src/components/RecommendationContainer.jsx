@@ -4,7 +4,10 @@ import Carousel from "./Carousel";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrUpdateRecommendations } from "../utils/redux/recommendationsSlice";
+import {
+  addOrUpdateRecommendations,
+  addOrUpdateTmdbResponse,
+} from "../utils/redux/recommendationsSlice";
 
 import { GEMINI_KEY, TMDB_API_OPTIONS } from "../utils/constants";
 
@@ -14,13 +17,16 @@ const RecommendationContainer = () => {
   const dispatch = useDispatch();
   const searchQuery = useRef(null);
 
-  const displayItemsArray = useSelector(
-    (store) => store.recommendations.movieRecommendations
-  );
+  const [displayItemsNamesArray, displayItemsArray] = useSelector((store) => [
+    store.recommendations.movieRecommendations,
+    store.recommendations.tmdbResponse,
+  ]);
+
+  console.log(displayItemsNamesArray);
+  console.log(displayItemsArray);
 
   const showSuggestions = async () => {
-    // const suggestions = await getSuggestionsArray();
-    const suggestions = ["Hera Pheri", "Golmaal", "Welcome", "Housefull"];
+    const suggestions = await getSuggestionsArray();
 
     const searchResponsesArray = await Promise.all(
       suggestions.map(
@@ -28,7 +34,8 @@ const RecommendationContainer = () => {
       )
     );
 
-    console.log(searchResponsesArray);
+    dispatch(addOrUpdateRecommendations(suggestions));
+    dispatch(addOrUpdateTmdbResponse(searchResponsesArray));
   };
 
   const getSuggestionsArray = async () => {
@@ -51,7 +58,7 @@ const RecommendationContainer = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className="w-full h-screen bg-black/30 backdrop-blur-lg pt-36 text-white">
+    <div className="w-full h-full bg-black/30 backdrop-blur-lg pt-36 text-white">
       <form
         className="text-center "
         onSubmit={(e) => {
@@ -72,14 +79,18 @@ const RecommendationContainer = () => {
         </button>
       </form>
       <div id="recommendation-result-carousels" className="px-8">
-        {/* {displayItemsArray.length > 0 &&
-          displayItemsArray.map((displayItemsArrayElem) => (
-            <Carousel
-              carouselTitle="test"
-              displayItems={displayItemsArrayElem}
-              showNavigationBtns={false}
-            />
-          ))} */}
+        {displayItemsArray.length > 0 && (
+          <>
+            <h1>Showing Results for "{searchQuery.current.value}"</h1>
+            {displayItemsArray.map((displayItemsArrayElem, index) => (
+              <Carousel
+                carouselTitle={displayItemsNamesArray[index]}
+                displayItems={displayItemsArrayElem}
+                showNavigationBtns={false}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
