@@ -24,6 +24,7 @@ const BrowseCarouselHolder = () => {
           genre_ids.includes(id)
         );
 
+        // eslint-disable-next-line
         if (moviesToDisplay.length < 5) return;
 
         shuffleArray(moviesToDisplay);

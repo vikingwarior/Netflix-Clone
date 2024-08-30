@@ -23,6 +23,7 @@ const useMovieClip = (entry_id) => {
   };
   useEffect(() => {
     !trailerVideo && getMovieVideos();
+    // eslint-disable-next-line
   }, []);
 };
 
