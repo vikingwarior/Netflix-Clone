@@ -13,7 +13,7 @@ const CarouselItem = ({
 
   return (
     <div
-      className="relative w-80 mr-3 hover:scale-125 transition-transform duration-300 hover:z-10 hover:mx-5"
+      className="relative w-80 mr-3 hover:scale-125 transition-transform duration-300 hover:z-10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
