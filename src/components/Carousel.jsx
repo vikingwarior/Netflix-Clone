@@ -49,13 +49,13 @@ const Carousel = ({
             }%)`,
           }}
         >
-          {displayItems.map(({ id, poster_path, title, popularity }, index) => (
+          {displayItems.map(({ id, backdrop_path, title, popularity }, index) => (
             <div key={index} className="carousel-entry w-1/5">
-              {poster_path && (
+              {backdrop_path && (
                 <CarouselItem
                   key={id}
                   entryId={id}
-                  entryBanner={poster_path}
+                  entryBanner={backdrop_path}
                   entryTitle={title}
                   entityRating={popularity}
                 />
