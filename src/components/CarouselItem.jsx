@@ -24,7 +24,7 @@ const CarouselItem = ({
       />
       {isHovered && (
         <div className="absolute top-0 left-0 z-20 w-full h-full bg-black bg-opacity-75 flex flex-col justify-center items-center text-white p-4">
-          <div className="w-full h-32 bg-gray-800 flex justify-center items-center overflow-hidden">
+          <div className="w-full h-32 bg-gray-800 flex justify-center items-center ">
             <video
               src={entryTrailer}
               controls
