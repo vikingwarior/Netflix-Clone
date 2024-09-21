@@ -40,29 +40,27 @@ const Carousel = ({
           </div>
         )}
       </div>
-      <div className="overflow-hidden">
-        <div
-          className="flex flex-shrink-0 transition-transform ease-out duration-500"
-          style={{
-            transform: `translateX(-${
-              currentIndex * (1000 / displayItems.length)
-            }%)`,
-          }}
-        >
-          {displayItems.map(({ id, backdrop_path, title, popularity }, index) => (
-            <div key={index} className="carousel-entry w-1/5">
-              {backdrop_path && (
-                <CarouselItem
-                  key={id}
-                  entryId={id}
-                  entryBanner={backdrop_path}
-                  entryTitle={title}
-                  entityRating={popularity}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+      <div
+        className="flex flex-shrink-0 transition-transform ease-out duration-500"
+        style={{
+          transform: `translateX(-${
+            currentIndex * (1000 / displayItems.length)
+          }%)`,
+        }}
+      >
+        {displayItems.map(({ id, backdrop_path, title, popularity }, index) => (
+          <div key={index} className="carousel-entry">
+            {backdrop_path && (
+              <CarouselItem
+                key={id}
+                entryId={id}
+                entryBanner={backdrop_path}
+                entryTitle={title}
+                entityRating={popularity}
+              />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
