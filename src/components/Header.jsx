@@ -6,10 +6,7 @@ import HeaderAccountOptionsDropdown from "./HeaderAccountOptionsDropdown";
 const Header = () => {
   const browseOptions = [
     { label: "Home", url: "../../../browse", id: "home-option" },
-    { label: "TV Shows", url: "../../../browse/genre/83", id: "tv-shows-option" },
-    { label: "New & Popular", url: "../../../browse/genre/34399", id: "new-and-popular-option" },
-    { label: "My List", url: "../../../browse/my-list", id: "my-list-option" },
-    { label: "Browse By Languages", url: "../../../browse/original-audio", id: "browse-by-language-option" },
+    { label: "AI Recommendations", url: "../../../browse/suggest", id: "bard-recommendations" },
   ];
 
   return (

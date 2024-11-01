@@ -26,9 +26,6 @@ const RecommendationContainer = () => {
     store.recommendations.tmdbResponse,
   ]);
 
-  console.log(displayItemsNamesArray);
-  console.log(displayItemsArray);
-
   const showSuggestions = async () => {
     const suggestions = await getSuggestionsArray();
 
